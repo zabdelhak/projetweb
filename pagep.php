@@ -1,16 +1,15 @@
 <?php
 session_start();
 echo($_SESSION["username"]);
-include("fonction\session.php");
+//include("fonction\session.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  
-  <style>
+<style>
     
   #aa
-{  
+    {  
     font-weight: bold;
     position:fixed;
     left:0;
@@ -27,7 +26,7 @@ include("fonction\session.php");
     text-align: center;
     box-sizing: content-box;
     border: 4px dashed red;
-  }
+    }
     .pic{
       margin: 40px 40px 0px 40px;
       
@@ -53,8 +52,8 @@ include("fonction\session.php");
       width: 100%;
       height: 20%;
     }
-  </style>
-  <script type='text/javascript'
+</style>
+  <script id="map" type='text/javascript'
             src='http://www.bing.com/api/maps/mapcontrol?callback=GetMap&key=AnBg1zAkil1YotryDJPI3f73rIsfIBtk6YMFrPIIzMmW-OVo54wmpaljHrJlZV4l' 
             async defer>
     </script> 
@@ -79,24 +78,6 @@ include("fonction\session.php");
   <link href="css/style.css" rel="stylesheet" />
   <!-- responsive style -->
   <link href="css/responsive.css" rel="stylesheet" />
-  <script>
-          function GetMap()
-  { 
-      var map = new Microsoft.Maps.Map('#myMap');  
-      Microsoft.Maps.Events.addHandler(map,'click', function (e) { set_latitudes_and_longitude_pickup(e);});
-      Microsoft.Maps.Events.addHandler(map,'rightclick', function (e) { set_latitudes_and_longitude_drop(e);});
-  }
-  function set_latitudes_and_longitude_pickup(map)
-  {
-    document.getElementById("pick_up").value=map.location.latitude;
-    document.getElementById("pick_btn").value=map.location.latitude;
-  }
-  function set_latitudes_and_longitude_drop(map)
-  {
-      document.getElementById("drop").value=map.location.latitude;
-      document.getElementById("drop_btn").value=map.location.latitude;
-  }    
-  </script>
 </head>
 <body>
     <div class="parent">
@@ -113,6 +94,8 @@ include("fonction\session.php");
           <div id=aa style="display:none">PLEASE FILL THE PICK UP LOCATION</div>
           <button id="confirm" type="submit" style="display:none" >GO!</button>
           </div>
+          <input id="pick_longue" style="display:none"></input>
+          <input id="drop_longue" style="display:none" ></input>
     </div>
     </div>
   </body>
@@ -123,50 +106,82 @@ include("fonction\session.php");
   <script src="js/custom.js"></script>
   <!-- <script src="js/pick.js"></script> -->
   <script>
-  function GetMap()
-{ 
-    var map = new Microsoft.Maps.Map('#myMap');
-      Microsoft.Maps.Events.addHandler(map,'click', function (e) { set_latitudes_and_longitude_pickup(e);});
-}
-function set_latitudes_and_longitude_pickup(map)
-{
-  document.getElementById("pick_up").value=map.location.latitude;
-  document.getElementById("pick_btn").value=map.location.latitude;
-}
-function set_latitudes_and_longitude_drop(map)
-{
+  function GetMap() {
+    var map = new Microsoft.Maps.Map('#myMap', {
+             credentials: 'AnBg1zAkil1YotryDJPI3f73rIsfIBtk6YMFrPIIzMmW-OVo54wmpaljHrJlZV4l',
+             center: new Microsoft.Maps.Location(36.727743,3.067681)
+         });
+      
+         var center = map.getCenter();
+
+//Create custom Pushpin
+var pin = new Microsoft.Maps.Pushpin(center, {
+  title: 'Choose a Pick Up Location',
+    text: ''
+});
+        Microsoft.Maps.Events.addHandler(map,'click', function (e) { set_latitudes_and_longitude_pickup(e);});
+        //Add the pushpin to the map
+        map.entities.push(pin);  
+    }
+ function set_latitudes_and_longitude_pickup(map)
+ {
+   document.getElementById("pick_up").value=map.location.latitude;
+   document.getElementById("pick_btn").value=map.location.latitude;
+   document.getElementById("pick_longue").value=map.location.longitude;
+   var map = new Microsoft.Maps.Map('#myMap', {
+            credentials: 'AnBg1zAkil1YotryDJPI3f73rIsfIBtk6YMFrPIIzMmW-OVo54wmpaljHrJlZV4l',
+            center: new Microsoft.Maps.Location(document.getElementById("pick_up").value,document.getElementById("pick_longue").value)
+        });
+
+       
+        var center = map.getCenter();
+
+        //Create custom Pushpin
+        var pin = new Microsoft.Maps.Pushpin(center, {
+            title: 'Pick Location',
+            text: ''
+        });
+        Microsoft.Maps.Events.addHandler(map,'click', function (e) { set_latitudes_and_longitude_pickup(e);});
+        //Add the pushpin to the map
+        map.entities.push(pin);
+
+  }
+ function set_latitudes_and_longitude_drop(map)
+ {
     document.getElementById("drop").value=map.location.latitude;
     document.getElementById("drop_btn").value=map.location.latitude;
- }
+    document.getElementById("drop_longue").value=map.location.longitude;
+    var map = new Microsoft.Maps.Map('#myMap', {
+            credentials: 'AnBg1zAkil1YotryDJPI3f73rIsfIBtk6YMFrPIIzMmW-OVo54wmpaljHrJlZV4l',
+            center: new Microsoft.Maps.Location(document.getElementById("drop").value,document.getElementById("drop_longue").value)
+        });
+      
+        var center = map.getCenter();
+
+        //Create custom Pushpin
+        var pin = new Microsoft.Maps.Pushpin(center, {
+          title: 'Drop Location',
+            text: ''
+        });
+        Microsoft.Maps.Events.addHandler(map,'click', function (e) { set_latitudes_and_longitude_drop(e);});
+        //Add the pushpin to the map
+        map.entities.push(pin);
+
+  }
 </script>
 </html>
-<script>
-  function show(){
-var stats =  document.getElementById("aa").style.display;
-if (stats == "none"){  
-document.getElementById("aa").style.display = "inline-block";
-} else {
-document.getElementById("aa").style.display = "none";  
-}
-}
+ <script>
   const pick_btn=document.getElementById("pick_btn");
         pick_btn.onclick=function(pick_btn)
         {if(document.getElementById("pick_up").value=="")
-        {show();}
+        {
+          show();
+        }
         else{
           document.getElementById("aa").style.display = "none";  
           GetMap2();
         }
         };
-        function GetMap2()
-          { 
-            var map = new Microsoft.Maps.Map('#myMap');
-            var click= Microsoft.Maps.Events.addHandler(map,'click', function (e) { set_latitudes_and_longitude_pickup(e);});
-                  Microsoft.Maps.Events.removeHandler(click);
-                  pick_btn.style.display='none';
-                  Microsoft.Maps.Events.addHandler(map,'click', function (e) { set_latitudes_and_longitude_drop(e);});
-                  const drop_btn=document.getElementById("drop_btn");
-          };
            function GetMap3()
           { 
             var map = new Microsoft.Maps.Map('#myMap');
@@ -197,10 +212,45 @@ document.getElementById("aa").style.display = "none";
             if(xhttp.readyState==4 && xhttp.status==200)
             {
               console.log("envoie avec succé");
+              var scrpt=document.getElementById("map");
+              // scrpt.setAttribute('src','http://www.bing.com/api/maps/mapcontrol?callback=GetMap&key=AnBg1zAkil1YotryDJPI3f73rIsfIBtk6YMFrPIIzMmW-OVo54wmpaljHrJlZV4l') ;
+             
             }
           }
           xhttp.open("GET",url,true);
           xhttp.send();
 
         }
+</script> 
+<script>
+    function show(){
+var stats =  document.getElementById("aa").style.display;
+if (stats == "none"){  
+document.getElementById("aa").style.display = "inline-block";
+} else {
+document.getElementById("aa").style.display = "none";  
+}
+}
+ function GetMap2()
+           {
+             var map = new Microsoft.Maps.Map('#myMap', {
+             credentials: 'AnBg1zAkil1YotryDJPI3f73rIsfIBtk6YMFrPIIzMmW-OVo54wmpaljHrJlZV4l',
+             center: new Microsoft.Maps.Location(document.getElementById("pick_up").value,document.getElementById("pick_longue").value)
+         });
+          
+        var center = map.getCenter();
+
+//Create custom Pushpin
+            var pin = new Microsoft.Maps.Pushpin(center, {
+           
+              title: 'Pick location',
+                text: ''
+            });
+         map.entities.push(pin);
+             var click= Microsoft.Maps.Events.addHandler(map,'click', function (e) { set_latitudes_and_longitude_pickup(e);});
+                   Microsoft.Maps.Events.removeHandler(click);
+                   pick_btn.style.display='none';
+                   Microsoft.Maps.Events.addHandler(map,'click', function (e) { set_latitudes_and_longitude_drop(e);});
+                   const drop_btn=document.getElementById("drop_btn");
+           };
 </script>
