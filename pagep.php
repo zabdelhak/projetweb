@@ -1,7 +1,7 @@
 <?php
 session_start();
 echo($_SESSION["username"]);
-//include("fonction\session.php");
+include("fonction\session.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
