@@ -54,5 +54,5 @@ drop_long varchar(45)
 date_depart varchar(45)
 
 =======
-Accédez à l'application via votre navigateur web : http://localhost/... (assurez-vous d'ajuster l'URL selon votre configuration).
+Accédez à l'application via votre navigateur web : http://127.0.0.1:81/projetweb/login.php (assurez-vous d'ajuster l'URL selon votre configuration).
 >>>>>>> a14446b12a36a8c0fffed6cb4dbcdc342e93e9ef
