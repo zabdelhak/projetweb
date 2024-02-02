@@ -260,6 +260,8 @@ function GetMap3()
               console.log("envoie avec succé");
               objet=xhttp.responseText;
               const obj=JSON.parse(objet);
+              var t=obj.pick_long;
+              console.log(t);
             }
           }
           xhttp.open("GET",url,true);
