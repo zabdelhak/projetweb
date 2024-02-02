@@ -260,8 +260,7 @@ function GetMap3()
           xhttp.onreadystatechange=function()
           {
             if(xhttp.readyState==4 && xhttp.status==200)
-            {
-              
+            { 
               objet=xhttp.responseText;
               const obj=JSON.parse(objet);
               var pick_long=obj.pick_long;
@@ -279,12 +278,9 @@ function GetMap3()
               document.getElementById("dp").style.display="inline-block";
               document.getElementById("place").style.display="inline-block";
               document.getElementById("lplace").style.display="inline-block";
-
               }
           }
           xhttp.open("GET",url,true);
           xhttp.send(null);
-          //console.log(pick_long);
-          
         }
 </script>
