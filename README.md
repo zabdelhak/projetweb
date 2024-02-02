@@ -33,9 +33,6 @@ Placez le projet dans le répertoire approprié du serveur web.
 
 Accès à l'Application :
 
-<<<<<<< HEAD
-Accédez à l'application via votre navigateur web : http://localhost/.... (assurez-vous d'ajuster l'URL selon votre configuration).
- 
 aussi pour le bon fonctionnment on vous suggére de créé
 -la table  chauffeur:
 iduser int PK 
