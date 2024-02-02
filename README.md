@@ -15,7 +15,11 @@ Bienvenue dans TAWSILA, une application web de covoiturage intégrant la géoloc
 
 1. **Cloner le Projet :**
    ```bash
+<<<<<<< HEAD
    git clone https://github.com/zabdelhak/projetweb
+=======
+   git clone https://github.com/zabdelhak/projetweb.git
+>>>>>>> a14446b12a36a8c0fffed6cb4dbcdc342e93e9ef
 
 Configuration de la Base de Données :
 
@@ -29,6 +33,7 @@ Placez le projet dans le répertoire approprié du serveur web.
 
 Accès à l'Application :
 
+<<<<<<< HEAD
 Accédez à l'application via votre navigateur web : http://localhost/.... (assurez-vous d'ajuster l'URL selon votre configuration).
  
 aussi pour le bon fonctionnment on vous suggére de créé
@@ -51,3 +56,6 @@ drop_att varchar(45)
 drop_long varchar(45) 
 date_depart varchar(45)
 
+=======
+Accédez à l'application via votre navigateur web : http://localhost/... (assurez-vous d'ajuster l'URL selon votre configuration).
+>>>>>>> a14446b12a36a8c0fffed6cb4dbcdc342e93e9ef
