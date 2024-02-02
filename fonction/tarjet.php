@@ -12,7 +12,7 @@ $nb=$re->fetch_assoc();
 $nb=intval($nb["idtrajet"]+1);
 // echo $nb;
 $sql="INSERT INTO trajet (idtrajet,iduser,pick_att,pick_long,drop_att,drop_long) VALUES ('$nb', '$username', '$pick_att', '$pick_long', '$drop_att', '$drop_long')";
-
 $re=$conn->query($sql);
-//header("location:http://dev.virtualearth.net/REST/v1/locationrecog/36.723714274679814,2.998576911884161?key=AnBg1zAkil1YotryDJPI3f73rIsfIBtk6YMFrPIIzMmW-OVo54wmpaljHrJlZV4l&output=json")
+print json_encode($nb);
+
 ?>
