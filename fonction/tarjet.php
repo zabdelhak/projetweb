@@ -1,9 +1,18 @@
 <?php
+include("condb.php"); 
 $drop_att=$_GET["drop_att"];
 $drop_long=$_GET["drop_long"];
 $pick_att=$_GET["pick_att"];
 $pick_long=$_GET["pick_long"];
-$hello="location:http://dev.virtualearth.net/REST/v1/locationrecog/".$drop_att.",".$drop_long;
-echo $hello;
+$username=$_GET["username"];
+//$hello="location:http://dev.virtualearth.net/REST/v1/locationrecog/".$username;
+$sql="SELECT count(*) as idtrajet from trajet";
+$re=$conn->query($sql);
+$nb=$re->fetch_assoc();
+$nb=intval($nb["idtrajet"]+1);
+// echo $nb;
+$sql="INSERT INTO trajet (idtrajet,iduser,pick_att,pick_long,drop_att,drop_long) VALUES ('$nb', '$username', '$pick_att', '$pick_long', '$drop_att', '$drop_long')";
+
+$re=$conn->query($sql);
 //header("location:http://dev.virtualearth.net/REST/v1/locationrecog/36.723714274679814,2.998576911884161?key=AnBg1zAkil1YotryDJPI3f73rIsfIBtk6YMFrPIIzMmW-OVo54wmpaljHrJlZV4l&output=json")
 ?>
