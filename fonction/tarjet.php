@@ -1,11 +1,6 @@
 <?php
-$drop=$_GET["drop"];
-$pick=$_GET["pick"];
-$user=(int)"1";
-echo($drop);
-echo($pick);
-echo($user);
-include("condb.php");
-$sql="INSERT INTO trajet values(1,1,'4','$drop','$pick','iiii','iiiiii')";
-$insert=$conn->query($sql);
+$drop=36.706713395650354;
+$pick=36.66984289615055;
+
+header("location:http://dev.virtualearth.net/REST/v1/locationrecog/36.706713395650354,36.66984289615055?key=AnBg1zAkil1YotryDJPI3f73rIsfIBtk6YMFrPIIzMmW-OVo54wmpaljHrJlZV4l&output=json")
 ?>
