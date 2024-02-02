@@ -86,20 +86,27 @@ include("fonction\session.php");
       <div class="child1 child2">
          <div class="pic">
          <div  style="display:none" ><input type="text" id="username" value="<?php echo($_SESSION["username"])?>"></div>
-          <label for="pick_up"> pick up </label>
+          <label id="lpick_up" for="pick_up"> pick up </label>
           <input  id="pick_up" type="text" placeholder="pick-Up location" readonly>
+          <label id="dp" for="date" style="display:none"> Date de Depart </label>
+          <input type="date" id="dated" style="display:none">
+          <input type="number" placeholder="Nombre de place" style="display:none" id="place">
+          <label id="place" for="date" style="display:none"> Nombre de place  </label>
+          <input type="number" id="place" style="display:none">
           <button id="pick_btn" name="pick_up" type="submit">lock in</button>
-          <label for="drop">where to drop:</label>
+          <label id="ldrop" for="drop">where to drop:</label>
           <input id="drop" type="text" placeholder="Drop location" readonly>
           <button id="drop_btn" name="drop" type="submit">lock in</button>
           <div id=aa style="display:none">PLEASE FILL THE PICK UP LOCATION</div>
           <button id="confirm" type="submit" style="display:none" onclick="fill()" >GO!</button>
+          <button id="reserv"  type="submit" style="display:none" onclick="setdate()">Reserver </button>
           </div>
           <input id="username" style="display:none" value="<?php echo $_SESSION["username"];?>">
           <input id="pick_longue" style="display:none"></input>
           <input id="drop_longue" style="display:none" ></input>
           <input id="pick_att" style="display:none"></input>
           <input id="drop_att" style="display:none" ></input>
+          
     </div>
     </div>
   </body>
@@ -266,8 +273,14 @@ function GetMap3()
               var drop_long=obj.drop_long;
               var idtrajet=obj.idtrajet;
               document.getElementById("confirm").style.display="none";
-              //console.log("envoie avec succé");
-              pins(pick_long,pick_att,drop_att,drop_long);
+              document.getElementById("pick_up").style.display="none";
+              document.getElementById("lpick_up").style.display="none";
+              document.getElementById("drop").style.display="none";
+              document.getElementById("dated").style.display="inline-block";
+              document.getElementById("ldrop").style.display="none";
+              document.getElementById("lpick_up").style.display="none";
+              document.getElementById("dp").style.display="inline-block";
+              document.getElementById("place").style.display="inline-block";
               }
           }
           xhttp.open("GET",url,true);
@@ -275,15 +288,4 @@ function GetMap3()
           //console.log(pick_long);
           
         }
-</script>
-<script>
-  function pins(pl,pa,da,dl)
-  {
-    var pick_long=pl;
-    var pick_att=pa;
-    var drop_att=da;
-    var drop_long=dl;
-    var map = new Microsoft.Maps.Map('#myMap');
-
-  };
 </script>
