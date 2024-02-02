@@ -23,7 +23,7 @@ Bienvenue dans TAWSILA, une application web de covoiturage intégrant la géoloc
 
 Configuration de la Base de Données :
 
-Importez le fichier SQL fourni (....) dans votre système de gestion de base de données.
+Importez le fichier SQL fourni (projetweb\sql) dans votre système de gestion de base de données.
 Configurez les informations de connexion à la base de données dans le fichier condb.php.
 
 Serveur Web Local :
@@ -31,7 +31,7 @@ Serveur Web Local :
 Utilisez XAMPP, WAMP, ou tout autre serveur web local.
 Placez le projet dans le répertoire approprié du serveur web.
 
-Accès à l'Application :
+Accès à l'Application : http://127.0.0.1:81/projetweb/login.php 
 
 aussi pour le bon fonctionnment on vous suggére de créé
 -la table  chauffeur: 
