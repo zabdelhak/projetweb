@@ -13,20 +13,20 @@ Bienvenue dans TAWSILA, une application web de covoiturage intégrant la géoloc
 
 ## Configuration du Projet
 
- **Cloner le Projet :**
+1. **Cloner le Projet :**
    ```bash
-   git clone https://github.com/..../..... /
+   git clone https://github.com/..../.....
 
-1.Configuration de la Base de Données :
+Configuration de la Base de Données :
 
 Importez le fichier SQL fourni (....) dans votre système de gestion de base de données.
 Configurez les informations de connexion à la base de données dans le fichier condb.php.
 
-2.Serveur Web Local :
+Serveur Web Local :
 
 Utilisez XAMPP, WAMP, ou tout autre serveur web local.
 Placez le projet dans le répertoire approprié du serveur web.
 
-3.Accès à l'Application :
+Accès à l'Application :
 
 Accédez à l'application via votre navigateur web : http://localhost/.... (assurez-vous d'ajuster l'URL selon votre configuration).
