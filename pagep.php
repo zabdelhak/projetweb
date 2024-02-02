@@ -283,10 +283,7 @@ function GetMap3()
     var pick_att=pa;
     var drop_att=da;
     var drop_long=dl;
-    var map = new Microsoft.Maps.Map('#myMap', {
-             credentials: 'AnBg1zAkil1YotryDJPI3f73rIsfIBtk6YMFrPIIzMmW-OVo54wmpaljHrJlZV4l',
-             center: new Microsoft.Maps.Location(pick_att,pick_long)
-         });
-         var center = map.getCenter();
+    var map = new Microsoft.Maps.Map('#myMap');
+
   };
 </script>
