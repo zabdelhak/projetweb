@@ -1,7 +1,8 @@
 <?php
 session_start();
 echo($_SESSION["username"]);
-//include("fonction\session.php");
+//$_SESSION["username"]="1";
+include("fonction\session.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -94,6 +95,7 @@ echo($_SESSION["username"]);
           <div id=aa style="display:none">PLEASE FILL THE PICK UP LOCATION</div>
           <button id="confirm" type="submit" style="display:none" onclick="fill()" >GO!</button>
           </div>
+          <input id="username" style="display:none" value="<?php echo $_SESSION["username"];?>">
           <input id="pick_longue" style="display:none"></input>
           <input id="drop_longue" style="display:none" ></input>
           <input id="pick_att" style="display:none"></input>
@@ -247,16 +249,16 @@ function GetMap3()
           var pick_long=document.getElementById("pick_longue").value;
           var drop_att=document.getElementById("drop_att").value;
           var drop_long=document.getElementById("drop_longue").value;
+          var username=document.getElementById("username").value;
           //+document.getElementById("pick_att").value+document.getElementById("drop_long").value+
           var xhttp = new XMLHttpRequest();
-          var url="fonction/tarjet.php?pick_att="+pick_att+"&pick_long="+pick_long+"&drop_att="+drop_att+"&drop_long="+drop_long;
+          var url="fonction/tarjet.php?pick_att="+pick_att+"&pick_long="+pick_long+"&drop_att="+drop_att+"&drop_long="+drop_long+"&username="+username;
           xhttp.onreadystatechange=function()
           {
             if(xhttp.readyState==4 && xhttp.status==200)
             {
               console.log("envoie avec succé");
               var scrpt=document.getElementById("map");
-              // scrpt.setAttribute('src','http://www.bing.com/api/maps/mapcontrol?callback=GetMap&key=AnBg1zAkil1YotryDJPI3f73rIsfIBtk6YMFrPIIzMmW-OVo54wmpaljHrJlZV4l') ;
             }
           }
           xhttp.open("GET",url,true);
