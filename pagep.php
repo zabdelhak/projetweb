@@ -88,8 +88,7 @@ include("fonction\session.php");
           <input  id="pick_up" type="text" placeholder="pick-Up location" readonly>
           <label id="dp" for="date" style="display:none"> Date de Depart </label>
           <input type="date" id="dated" style="display:none">
-          <input type="number" placeholder="Nombre de place" style="display:none" id="place">
-          <label id="place" for="date" style="display:none"> Nombre de place  </label>
+          <label id="lplace" for="place" style="display:none"> Nombre de place  </label>
           <input type="number" id="place" style="display:none">
           <button id="pick_btn" name="pick_up" type="submit">lock in</button>
           <label id="ldrop" for="drop">where to drop:</label>
@@ -279,6 +278,8 @@ function GetMap3()
               document.getElementById("lpick_up").style.display="none";
               document.getElementById("dp").style.display="inline-block";
               document.getElementById("place").style.display="inline-block";
+              document.getElementById("lplace").style.display="inline-block";
+
               }
           }
           xhttp.open("GET",url,true);
