@@ -258,10 +258,11 @@ function GetMap3()
             if(xhttp.readyState==4 && xhttp.status==200)
             {
               console.log("envoie avec succé");
-              var scrpt=document.getElementById("map");
+              objet=xhttp.responseText;
+              const obj=JSON.parse(objet);
             }
           }
           xhttp.open("GET",url,true);
-          xhttp.send();
+          xhttp.send(null);
         }
       </script>
