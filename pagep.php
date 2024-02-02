@@ -241,8 +241,8 @@ function GetMap3()
           var xhttp = new XMLHttpRequest();
       };
     }
-      </script>
-      <script>
+</script>
+<script>
         function fill()
         {
           var pick_att=document.getElementById("pick_att").value;
@@ -257,14 +257,36 @@ function GetMap3()
           {
             if(xhttp.readyState==4 && xhttp.status==200)
             {
-              console.log("envoie avec succé");
+              
               objet=xhttp.responseText;
               const obj=JSON.parse(objet);
-              var t=obj.pick_long;
-              console.log(t);
-            }
+              var pick_long=obj.pick_long;
+              var pick_att=obj.pick_att;
+              var drop_att=obj.drop_att;
+              var drop_long=obj.drop_long;
+              var idtrajet=obj.idtrajet;
+              document.getElementById("confirm").style.display="none";
+              //console.log("envoie avec succé");
+              pins(pick_long,pick_att,drop_att,drop_long);
+              }
           }
           xhttp.open("GET",url,true);
           xhttp.send(null);
+          //console.log(pick_long);
+          
         }
-      </script>
+</script>
+<script>
+  function pins(pl,pa,da,dl)
+  {
+    var pick_long=pl;
+    var pick_att=pa;
+    var drop_att=da;
+    var drop_long=dl;
+    var map = new Microsoft.Maps.Map('#myMap', {
+             credentials: 'AnBg1zAkil1YotryDJPI3f73rIsfIBtk6YMFrPIIzMmW-OVo54wmpaljHrJlZV4l',
+             center: new Microsoft.Maps.Location(pick_att,pick_long)
+         });
+         var center = map.getCenter();
+  };
+</script>
