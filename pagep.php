@@ -96,7 +96,7 @@ include("fonction\session.php");
           <button id="drop_btn" name="drop" type="submit">lock in</button>
           <div id=aa style="display:none">PLEASE FILL THE PICK UP LOCATION</div>
           <button id="confirm" type="submit" style="display:none" onclick="fill()" >GO!</button>
-          <button id="reserv"  type="submit" style="display:none" onclick="setdate()">Reserver </button>
+          <button id="reserver"  type="submit" style="display:none" onclick="setdate()">Reserver </button>
           </div>
           <input id="username" style="display:none" value="<?php echo $_SESSION["username"];?>">
           <input id="pick_longue" style="display:none"></input>
@@ -127,7 +127,7 @@ include("fonction\session.php");
 var pin = new Microsoft.Maps.Pushpin(center, {
   title: 'Choose a Pick Up Location',
     text: ''
-});
+  });
         Microsoft.Maps.Events.addHandler(map,'click', function (e) { set_latitudes_and_longitude_pickup(e);});
         //Add the pushpin to the map
         map.entities.push(pin);  
@@ -278,9 +278,27 @@ function GetMap3()
               document.getElementById("dp").style.display="inline-block";
               document.getElementById("place").style.display="inline-block";
               document.getElementById("lplace").style.display="inline-block";
+              document.getElementById("reserver").style.display="inline-block";
               }
           }
           xhttp.open("GET",url,true);
           xhttp.send(null);
         }
+</script>
+<script>
+  function setdate()
+  {
+    var date=document.getElementById("dated").value;
+    var place=document.getElementById("place").value;
+    if(date!=""&&place!=0)
+    {
+      // console.log(idtrajet);
+    }
+    else
+    {
+      document.getElementById("aa").innerText ="PLEASE FILL THE DEBUT OF THE RIDE AND THE NUMBER OF PLACES IN IT!!";
+          show();
+          
+    }
+  }
 </script>
