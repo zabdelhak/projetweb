@@ -19,7 +19,6 @@ $affected = $conn-> affected_rows;
 // echo $affected;
 if($affected==1)
  {
-
      header("location:../chauffeur/login.php");
  }
 ?>
