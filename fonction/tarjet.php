@@ -2,7 +2,6 @@
 session_start();
 include("session.php");
 include("condb.php"); 
-
 $drop_att=$_GET["drop_att"];
 $drop_long=$_GET["drop_long"];
 $pick_att=$_GET["pick_att"];

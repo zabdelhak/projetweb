@@ -5,7 +5,6 @@
   <link rel="stylesheet" href="../bootsstrap/css/bootstrap.min.css">
   <script src="../bootsstrap/js/bootstrap.bundle.min.js"></script>
 </head>
-
 <body style="background-color:#240a5e;">
   <div class="container">
     <div class="row">
