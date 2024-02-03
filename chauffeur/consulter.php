@@ -215,7 +215,7 @@ include("../fonction/condb.php");
                 <div class="modal-body">voulez vous vraiment vous deconnectez ?.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="dex.php">Déconnexion</a>
+                    <a class="btn btn-primary" href="../fonction/dex.php">Déconnexion</a>
                 </div>
             </div>
         </div>
