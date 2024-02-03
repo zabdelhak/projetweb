@@ -20,5 +20,4 @@ $r=$re->fetch_assoc();
 $re=array();
 $re=$r;
 print json_encode($re);
-
 ?>
