@@ -3,6 +3,12 @@ session_start();
 $iduser=$_SESSION["username"];
 include("../fonction/condb.php");
 include("../fonction/session.php");
+//echo $user;
+$res="SELECT user_name,user_fname,last_cnx,iduser from user where  iduser=$iduser";
+// echo $res;
+$name=$conn->query($res);
+// $rep= mysqli_fetch_array($name);
+$rows=$name->fetch_assoc();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -116,27 +122,30 @@ include("../fonction/session.php");
                         <div class="topbar-divider d-none d-sm-block"></div>
 
                         <!-- Nav Item - User Information -->
+                    <ul class="navbar-nav ml-auto">
                         <li class="nav-item dropdown no-arrow">
-                        <a class="nav-link dropdown-toggle"  id="userDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"></span>
-                                 <img class="img-profile rounded-circle"
-                                    src="../App/imge/undraw_profile.svg"> 
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $rows["user_name"]." ".$rows["user_fname"];?></span>
+                                                    <img class="img-profile rounded-circle"
+                                                        src="../App/imge/undraw_profile.svg">
+                                                
                             </a>
-                            <!-- Dropdown - User Information -->
-                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="pofile.php">
-                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Profile
-                                </a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" data-toggle="modal" data-target="#logoutModal">
-                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Logout
-                                </a>
+                        <!-- Dropdown - User Information -->
+                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                                                    <a id="consulter" class="dropdown-item" href="pofile.php">
+                                                        <i class="fa fa-home fa-sm fa-fw mr-2 text-gray-400" aria-hidden="true"></i>
+                                                        profile
+                                                    </a>
+                                                    <div class="dropdown-divider"></div>
+                                                    <a class="dropdown-item" href="dex.php" data-toggle="modal" data-target="#logoutModal">
+                                                        <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                                        Logout
+                                                    </a>
                             </div>
                         </li>
+
+                    </ul>
+
 
                     </ul>
 

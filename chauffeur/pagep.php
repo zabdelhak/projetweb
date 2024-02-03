@@ -1,6 +1,6 @@
 <?php
 session_start();
-echo($_SESSION["username"]);
+// echo($_SESSION["username"]);
 //$_SESSION["username"]="1";
 include("../fonction/session.php");
 ?>
@@ -96,7 +96,7 @@ include("../fonction/session.php");
           <div id=aa style="display:none">PLEASE FILL THE PICK UP LOCATION</div>
           <button id="confirm" type="submit" style="display:none" onclick="fill()" >GO!</button>
           <button id="reserver"  type="submit" style="display:none" onclick="setdate()">Reserver </button>
-          <button id="consulter"  type="submit" style="display:none" onclick="go()">consulter mes trajets</button>
+          <button id="consulter"  type="submit"  onclick="go()">consulter mes trajets</button>
           </div>
           <input id="username" style="display:none" value="<?php echo $_SESSION["username"];?>">
           <input id="pick_longue" style="display:none"></input>
