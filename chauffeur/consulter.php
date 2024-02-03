@@ -1,8 +1,8 @@
 <?php
-$iduser=$_GET["iduser"];
+session_start();
+$iduser=$_SESSION["username"];
 include("../fonction/condb.php");
-// include("../fonction/session.php");
-//$iduser='1';
+include("../fonction/session.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -63,6 +63,9 @@ include("../fonction/condb.php");
                 <a class="nav-link">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Les Demandes:</span></a>
+                    <a class="nav-link" href="pagep.php">
+                    <i class="fa fa-car"></i>
+                    <span>Reserver un trajet:</span></a>
             </li>
 
             <!-- Divider -->
@@ -123,7 +126,7 @@ include("../fonction/condb.php");
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
-                                <a class="dropdown-item">
+                                <a class="dropdown-item" href="pofile.php">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Profile
                                 </a>
