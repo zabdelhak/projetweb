@@ -1,4 +1,6 @@
 <?php 
+session_start();
+include("session.php");
 include("condb.php");
 $name=mysqli_real_escape_string( $conn,htmlspecialchars($_POST['user_name']));
 $fname=mysqli_real_escape_string( $conn,htmlspecialchars($_POST['user_fname']));
@@ -16,8 +18,5 @@ $affected = $conn-> affected_rows;
 if($affected==1)
 {
     header("location:../chauffeur/login.php");
-}
-{
-    
 }
 ?>

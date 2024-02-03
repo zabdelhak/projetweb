@@ -165,7 +165,7 @@ $rows=$name->fetch_assoc();
                                         <tr>
                                         <th>nombre de place disponible</th>
                                             <th>date depart</th>
-                                            <th>nombre de place disponible</th>
+                                            <th>nombre de place prise</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
