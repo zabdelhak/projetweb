@@ -88,7 +88,7 @@ include("../fonction/session.php");
           <label id="dp" for="date" style="display:none"> Date de Depart </label>
           <input type="date" id="dated" style="display:none">
           <label id="lplace" for="place" style="display:none"> Nombre de place  </label>
-          <input type="number" id="place" style="display:none">
+          <input type="number" id="place" style="display:none" min="1">
           <button id="pick_btn" name="pick_up" type="submit">lock in</button>
           <label id="ldrop" for="drop">where to drop:</label>
           <input id="drop" type="text" placeholder="Drop location" readonly>
@@ -96,6 +96,7 @@ include("../fonction/session.php");
           <div id=aa style="display:none">PLEASE FILL THE PICK UP LOCATION</div>
           <button id="confirm" type="submit" style="display:none" onclick="fill()" >GO!</button>
           <button id="reserver"  type="submit" style="display:none" onclick="setdate()">Reserver </button>
+          <button id="consulter"  type="submit" style="display:none" onclick="go()">consulter mes trajets</button>
           </div>
           <input id="username" style="display:none" value="<?php echo $_SESSION["username"];?>">
           <input id="pick_longue" style="display:none"></input>
@@ -112,7 +113,6 @@ include("../fonction/session.php");
   <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js">
   </script>
   <script src="../js/custom.js"></script>
-  <!-- <script src="js/pick.js"></script> -->
   <script>
       var url="../fonction/trajet.php?";
   function GetMap() {
@@ -299,7 +299,10 @@ function GetMap3()
           {
             if(xhttp.readyState==4 && xhttp.status==200)
             { 
-              
+              document.getElementById("reserver").style.display="none";
+              document.getElementById("consulter").style.display="inline-block";
+              document.getElementById("username").value=;
+
             }
           }
           xhttp.open("GET",url,true);
@@ -310,5 +313,11 @@ function GetMap3()
       document.getElementById("aa").innerText ="PLEASE FILL THE DEBUT OF THE RIDE AND THE NUMBER OF PLACES IN IT!!";
           show();  
     }
+  }
+</script>
+<script>
+  function go()
+  {
+    window.location="http://127.0.0.1:81/projetweb/chauffeur/consulter.php"; 
   }
 </script>

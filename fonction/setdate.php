@@ -9,9 +9,8 @@ $place=mysqli_real_escape_string( $conn,htmlspecialchars($_GET["place"]));
 $sql="UPDATE trajet SET date_depart='$date',nbplace='$place',nbplacer='$place' WHERE (idtrajet = '$idtrajet')";
 //echo($sql);
 $re=$conn->query($sql);
-$sql="SELECT idtrajet,pick_att,pick_long,drop_att,drop_long from trajet where idtrajet=$idtrajet";
+$sql="SELECT idtrajet,pick_att,pick_long,drop_att,drop_long,iduser from trajet where idtrajet=$idtrajet";
 //echo $sql;
 $re=$conn->query($sql);
-$r=$re->fetch_assoc();
-var_dump($r);
+
 ?>
