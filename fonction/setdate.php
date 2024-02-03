@@ -12,5 +12,9 @@ $re=$conn->query($sql);
 $sql="SELECT idtrajet,pick_att,pick_long,drop_att,drop_long,iduser from trajet where idtrajet=$idtrajet";
 //echo $sql;
 $re=$conn->query($sql);
-
+$r=$re->fetch_assoc();
+//var_dump($r); 
+$re=array();
+$re=$r;
+print json_encode($re);
 ?>

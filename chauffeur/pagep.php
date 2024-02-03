@@ -299,9 +299,13 @@ function GetMap3()
           {
             if(xhttp.readyState==4 && xhttp.status==200)
             { 
+              objet=xhttp.responseText;
+              const obj=JSON.parse(objet);
+              //console.log(obj);
               document.getElementById("reserver").style.display="none";
               document.getElementById("consulter").style.display="inline-block";
-              document.getElementById("username").value=;
+              document.getElementById("username").value=obj.iduser;
+              console.log(document.getElementById("username").value);
 
             }
           }
@@ -318,6 +322,7 @@ function GetMap3()
 <script>
   function go()
   {
-    window.location="http://127.0.0.1:81/projetweb/chauffeur/consulter.php"; 
+    var url=document.getElementById("username").value;
+     window.location="http://127.0.0.1:81/projetweb/chauffeur/consulter.php?iduser="+url; 
   }
 </script>

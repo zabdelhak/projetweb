@@ -1,6 +1,8 @@
 <?php
+$iduser=$_GET["iduser"];
 include("../fonction/condb.php");
 // include("../fonction/session.php");
+//$iduser='1';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -35,11 +37,13 @@ include("../fonction/condb.php");
     <div id="wrapper">
 
         <!-- Sidebar -->
-        <ul class="navbar-nav  sidebar sidebar-dark accordion" id="accordionSidebar"  style="background-color:#085426;">
+        <ul class="navbar-nav  sidebar sidebar-dark accordion" id="accordionSidebar"  style="background-color:#240a5e;">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="princli.php">
-                <div class="sidebar-brand-text mx-3"><img style="width:12rem; height:4rem;" src="../App/imge/logo.png"></div>
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" >
+                <span>
+              TAWSILA
+            </span>
             </a>
 
             <!-- Divider -->
@@ -56,7 +60,7 @@ include("../fonction/condb.php");
             <!-- Nav Item - Charts -->    
            <!-- Nav Item - Tables -->
             <li class="nav-item active">
-                <a class="nav-link" href="table.php">
+                <a class="nav-link">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Les Demandes:</span></a>
             </li>
@@ -110,35 +114,21 @@ include("../fonction/condb.php");
 
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
-                        <a class="nav-link dropdown-toggle" href="profile.php" id="userDropdown" role="button"
+                        <a class="nav-link dropdown-toggle"  id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $rows["nom"]." ".$rows["prenom"]?></span>
-                                <?php
-                                if($rows["genre"]=='H')
-                                {?>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"></span>
                                  <img class="img-profile rounded-circle"
-                                    src="../App/imge/undraw_profile.svg">
-                                <?php
-                                }
-                                else
-                                {?>
-                                
-                                <img class="img-profile rounded-circle"
-                                    src="../App/imge/undraw_profile_1.svg">
-                                <?php  
-                                }
-                                ?>
-                               
+                                    src="../App/imge/undraw_profile.svg"> 
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="profile.php">
+                                <a class="dropdown-item">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Profile
                                 </a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="dex.php" data-toggle="modal" data-target="#logoutModal">
+                                <a class="dropdown-item" data-toggle="modal" data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Logout
                                 </a>
@@ -161,13 +151,9 @@ include("../fonction/condb.php");
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th>id demande</th>
-                                            <th>Service</th>
-                                            <th>Nom</th>
-                                            <th>Prenom</th>
-                                            <th>Date de  demende</th>
-                                            <th>Statut</th>
-                                            <th>Action</th>
+                                        <th>trajet</th>
+                                            <th>date depart</th>
+                                            <th>nombre de place disponible</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
@@ -179,20 +165,15 @@ include("../fonction/condb.php");
                                     </tfoot>
                                     <tbody>
                                         <?php
-                                         $sql="SELECT idtrajet,nbplacer                                                                              FROM demend T3,services T2, client T1
-                                         where (iduser='')";
+                                         $sql="SELECT idtrajet,date_depart,nbplacer FROM trajet where (iduser='$iduser')";
                                          $res=$conn->query($sql);
                                         while($ligne=$res->fetch_assoc())
                                         {
                                             ?>
                                             <tr>
-                                                <td><?php echo $ligne["iddemend"];?></td>
-                                                <td><?php echo $ligne["nom_services"]?></td>
-                                                <td><?php echo $ligne["nom"]?></td>
-                                                <td><?php echo $ligne["prenom"]?></td>
-                                                <td><?php echo $ligne["date_demend"]?></td>
-                                                <td><?php echo $ligne["statut"]?></td>
-                                                <td><button id="<?php echo $ligne["iddemend"];?>"  onclick="ouvrir(this.id)" class="btn btn-primary"><i class='far fa-eye'></i></button></td>
+                                                <td><?php echo $ligne["idtrajet"];?></td>
+                                                <td><?php echo $ligne["date_depart"];?></td> 
+                                                <td><?php echo $ligne["nbplacer"];?></td> 
                                             </tr>
                                             <?php
                                         }                                
@@ -216,7 +197,7 @@ include("../fonction/condb.php");
     <!-- End of Page Wrapper -->
 
     <!-- Scroll to Top Button-->
-    <a class="scroll-to-top rounded" href="#page-top">
+    <a class="scroll-to-top rounded">
         <i class="fas fa-angle-up"></i>
     </a>
 
@@ -239,7 +220,6 @@ include("../fonction/condb.php");
             </div>
         </div>
     </div>
-
     <!-- Bootstrap core JavaScript-->
     <script src="../App/vendor/jquery/jquery.min.js"></script>
     <script src="../App/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -256,13 +236,6 @@ include("../fonction/condb.php");
 
     <!-- Page level custom scripts  -->
     <script src="../App/js/demo/datatables-demo.js"></script>
-<script>
-function ouvrir (id)
-{
-    window.location.href="ouvrire.php?id="+id;
-}
-
-</script>
 </body>
 
 </html>
