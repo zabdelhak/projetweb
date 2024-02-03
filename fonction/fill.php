@@ -15,7 +15,7 @@ $re=$conn->query($insert);
 $affected = $conn-> affected_rows;
 if($affected==1)
 {
-    header("location:../pagep.php");
+    header("location:../chauffeur/login.php");
 }
 {
     
