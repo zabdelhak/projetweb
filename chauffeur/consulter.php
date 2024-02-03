@@ -154,29 +154,33 @@ include("../fonction/session.php");
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                        <th>trajet</th>
+                                        <th>nombre de place disponible</th>
                                             <th>date depart</th>
                                             <th>nombre de place disponible</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
-                                            <th>trajet</th>
+                                            <th>nomber de place disponible</th>
                                             <th>date depart</th>
-                                            <th>nombre de place disponible</th>
+                                            <th>nombre de place prise</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
                                         <?php
-                                         $sql="SELECT idtrajet,date_depart,nbplacer FROM trajet where (iduser='$iduser')";
+                                         $sql="SELECT nbplace,date_depart,nbplacer FROM trajet where (iduser='$iduser') ";
                                          $res=$conn->query($sql);
                                         while($ligne=$res->fetch_assoc())
                                         {
                                             ?>
                                             <tr>
-                                                <td><?php echo $ligne["idtrajet"];?></td>
+                                                <td><?php echo $ligne["nbplace"];?></td>
                                                 <td><?php echo $ligne["date_depart"];?></td> 
-                                                <td><?php echo $ligne["nbplacer"];?></td> 
+                                                <td><?php $nbplacer= (int) $ligne["nbplacer"];
+                                                            $nbplace=(int) $ligne["nbplace"];
+                                                            $ligne["nbplacer"]=$nbplace-$nbplacer;
+                                                echo $ligne["nbplacer"];?>
+                                                </td> 
                                             </tr>
                                             <?php
                                         }                                
