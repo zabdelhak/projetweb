@@ -4,7 +4,7 @@ include("../fonction/session.php");
 include("../fonction/condb.php");
 $user=$_SESSION["username"];
 //echo $user;
-$res="SELECT user_name,user_fname,last_cnx,iduser from user where  iduser=$user";
+$res="SELECT user_name,user_fname,last_cnx,iduser,email from user where  iduser=$user";
 // echo $res;
 $name=$conn->query($res);
 // $rep= mysqli_fetch_array($name);
@@ -103,19 +103,14 @@ $rows=$name->fetch_assoc();
                                             <th>NOM</th>
                                             <th>PRENOM</th>
                                             <th>Date de derniere connexion</th>
+                                            <th>email</th>
                                         </tr>
                                     </thead>
-                                    <tfoot>
-                                        <tr>
-                                            <th>NOM</th>
-                                            <th>PRENOM</th>
-                                            <th>Date de derniere connexion</th>
-                                        </tr>
-                                    </tfoot>
                                     <tbody>
                                         <td><?php echo $rows['user_name']?></td>
                                         <td><?php echo $rows['user_fname']?></td>
-                                        <td><?php echo $rows['last_cnx']?></td>                                        
+                                        <td><?php echo $rows['last_cnx']?></td>
+                                        <td><?php echo $rows['email']?></td>                                          
                                     </tbody>
                                 </table>
                             </div>
