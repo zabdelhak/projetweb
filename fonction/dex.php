@@ -1,7 +1,8 @@
 <?php
 include("session.php");
   if((isset($_SESSION["username"]))){
-    header('Location:login.php');
+    $_SESSION["username"]="";
     session_destroy();
+    header('Location:login.php');
     }
 ?>
