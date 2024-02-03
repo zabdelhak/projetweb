@@ -20,13 +20,13 @@ session_start();
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
 
   <!-- bootstrap core css -->
-  <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+  <link rel="stylesheet" type="text/css" href="../css/bootstrap.css" />
 
   <!-- fonts style -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Poppins:400,600,700&display=swap" rel="stylesheet">
 
-  <link href="css/style.css" rel="stylesheet" />
-  <link href="css/responsive.css" rel="stylesheet" />
+  <link href="../css/style.css" rel="stylesheet" />
+  <link href="../css/responsive.css" rel="stylesheet" />
 </head>
 
 <body>
@@ -70,7 +70,7 @@ session_start();
     <section class=" slider_section position-relative">
       <div class="slider_container">
         <div class="img-box">
-          <img src="images/hero-img.jpg" alt="">
+          <img src="../images/hero-img.jpg" alt="">
         </div>
         <div class="detail_container">
           <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
@@ -98,7 +98,7 @@ session_start();
   <!-- book section -->
   <section class="book_section">
     <div class="form_container" id="login">
-    <form action="fonction\flogin.php" method="post">
+    <form action="../fonction/flogin.php" method="post">
         <div class="form-row">
           <div class="col-lg-8">
             <div class="form-row">
@@ -124,14 +124,14 @@ session_start();
       </form>
     </div>
     <div class="img-box">
-      <img src="images/book-car.png" alt="">
+      <img src="../images/book-car.png" alt="">
     </div>
   </section>
 </body>
 
-<script src="js/jquery-3.4.1.min.js"></script>
-  <script src="js/bootstrap.js"></script>
+<script src="../js/jquery-3.4.1.min.js"></script>
+  <script src="../js/bootstrap.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js">
   </script>
-  <script src="js/custom.js"></script>
+  <script src="../js/custom.js"></script>
 </html>
