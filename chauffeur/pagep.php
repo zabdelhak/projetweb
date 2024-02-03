@@ -7,8 +7,7 @@ include("../fonction/session.php");
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<style>
-    
+<style> 
   #aa
     {  
     font-weight: bold;
@@ -112,7 +111,7 @@ include("../fonction/session.php");
   <script src="../js/bootstrap.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js">
   </script>
-  <script src="js/custom.js"></script>
+  <script src="../js/custom.js"></script>
   <!-- <script src="js/pick.js"></script> -->
   <script>
       var url="../fonction/trajet.php?";
@@ -181,7 +180,6 @@ var pin = new Microsoft.Maps.Pushpin(center, {
 </script>
 </html>
  <script>
-  var hello="";
   const pick_btn=document.getElementById("pick_btn");
         pick_btn.onclick=function(pick_btn)
         {if(document.getElementById("pick_up").value=="")
@@ -269,6 +267,7 @@ function GetMap3()
               var drop_att=obj.drop_att;
               var drop_long=obj.drop_long;
               var idtrajet=obj.idtrajet;
+              document.getElementById("idtrajet").value=idtrajet;
               document.getElementById("confirm").style.display="none";
               document.getElementById("pick_up").style.display="none";
               document.getElementById("lpick_up").style.display="none";
@@ -291,15 +290,25 @@ function GetMap3()
   {
     var date=document.getElementById("dated").value;
     var place=document.getElementById("place").value;
+    var idtrajet=document.getElementById("idtrajet").value
     if(date!=""&&place!=0)
     {
-      // console.log(idtrajet);
+      var xhttp = new XMLHttpRequest();
+          var url="../fonction/setdate.php?idtrajet="+idtrajet+"&date="+date+"&place="+place;
+          xhttp.onreadystatechange=function()
+          {
+            if(xhttp.readyState==4 && xhttp.status==200)
+            { 
+              
+            }
+          }
+          xhttp.open("GET",url,true);
+          xhttp.send(null);
     }
     else
     {
       document.getElementById("aa").innerText ="PLEASE FILL THE DEBUT OF THE RIDE AND THE NUMBER OF PLACES IN IT!!";
-          show();
-          
+          show();  
     }
   }
 </script>
