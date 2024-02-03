@@ -16,7 +16,7 @@
         <div class="card border-0 shadow rounded-3 my-5">
           <div class="card-body p-4 p-sm-5">
             <h5 class="card-title text-center mb-5 fw-light fs-5">SIGN UP<br></h5>
-            <form action="../fonction/fill.php" method="post">
+            <form action="..\fonction\fill.php" method="post">
             <div class="form-floating mb-3">
                 <input type="text" class="form-control" id="floatingPassword" name="user_name" required>
                 <label for="floatingPassword">NOM</label>
@@ -38,7 +38,7 @@
                 <label for="floatingInput">EMAIL</label>
               </div>
               <div class="form-floating mb-3">
-                <input type="text" class="form-control" id="floatingPassword" name="mdp" required>
+                <input type="password" class="form-control" id="floatingPassword" name="mdp" required>
                 <label for="floatingPassword">PASSWORD FOR YOUR ACCOUNT</label>
               </div>
               <div class="d-grid mb-3">
